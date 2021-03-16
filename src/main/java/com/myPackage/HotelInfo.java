@@ -5,6 +5,18 @@ public class HotelInfo {
     public int price;
     public int rating;
 
+    public int getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
     public HotelInfo(String name, int price,int rating) {
         this.name=name;
         this.price=price;
