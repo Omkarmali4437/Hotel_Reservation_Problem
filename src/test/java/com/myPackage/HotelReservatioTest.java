@@ -11,9 +11,9 @@ import static com.myPackage.HotelReservation.hotelInfos;
 public class HotelReservatioTest {
     HotelReservation hotelReservation;
 
-    HotelInfo lakewood =new HotelInfo("Lakewood",110,3);
-    HotelInfo bridgewood =new HotelInfo("Bridgewood",160,4);
-    HotelInfo ridgewood =new HotelInfo("Ridgewood",220,5);
+    HotelInfo lakewood =new HotelInfo("Lakewood",110,90,3);
+    HotelInfo bridgewood =new HotelInfo("Bridgewood",160,50,4);
+    HotelInfo ridgewood =new HotelInfo("Ridgewood",220,150,5);
 
     @Before
     public void setup(){
@@ -41,7 +41,14 @@ public class HotelReservatioTest {
         LocalDate enddate=LocalDate.of(2020,10,11);
 
         HotelInfo cheapesthotel=hotelReservation.findChepeatesthotel(startdate,enddate);
-        
+
         Assert.assertEquals("Lakewood",cheapesthotel.getName());
+    }
+
+    @Test
+    public void ability_to_have_weekday_and_weekend_rates(){
+        Assert.assertEquals(90,lakewood.getWeekendrate());
+        Assert.assertEquals(50,bridgewood.getWeekendrate());
+        Assert.assertEquals(150,ridgewood.getWeekendrate());
     }
 }

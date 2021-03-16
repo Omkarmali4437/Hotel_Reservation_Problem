@@ -2,11 +2,24 @@ package com.myPackage;
 
 public class HotelInfo {
     public String name;
-    public int price;
+    public int weekdayrate;
+    public int weekendrate;
     public int rating;
 
-    public int getPrice() {
-        return price;
+    public void setWeekdayrate(int weekdayrate) {
+        this.weekdayrate = weekdayrate;
+    }
+
+    public int getWeekdayrate() {
+        return weekdayrate;
+    }
+
+    public void setWeekendrate(int weekendrate) {
+        this.weekendrate = weekendrate;
+    }
+
+    public int getWeekendrate() {
+        return weekendrate;
     }
 
     public String getName() {
@@ -17,9 +30,10 @@ public class HotelInfo {
         return rating;
     }
 
-    public HotelInfo(String name, int price,int rating) {
+    public HotelInfo(String name, int weekdayrate,int weekendrate,int rating) {
         this.name=name;
-        this.price=price;
+        this.weekdayrate = weekdayrate;
+        this.weekendrate = weekendrate;
         this.rating=rating;
     }
 
@@ -27,7 +41,8 @@ public class HotelInfo {
     public String toString() {
         return "HotelInfo{" +
                 "name='" + name + '\'' +
-                ", price=" + price +
+                ", Week Day rate=" + weekdayrate +
+                ", Week End rate=" + weekendrate +
                 ", rating=" + rating +
                 '}';
     }

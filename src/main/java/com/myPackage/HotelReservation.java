@@ -17,9 +17,9 @@ public class HotelReservation {
 
     public HotelInfo findChepeatesthotel(LocalDate startdate,LocalDate enddate){
         long days= ChronoUnit.DAYS.between(startdate,enddate);
-        HotelInfo min= Collections.min(hotelInfos,Comparator.comparing(hotelInfo->hotelInfo.price));
+        HotelInfo min= Collections.min(hotelInfos,Comparator.comparing(hotelInfo->hotelInfo.weekdayrate));
         int cheaprate;
-        cheaprate=(int)(days*min.getPrice());
+        cheaprate=(int)(days*min.getWeekdayrate());
         System.out.println("Cheapest Hotel Name: "+ min.getName() + "\nTotal Rate: "+cheaprate);
         return min;
     }
