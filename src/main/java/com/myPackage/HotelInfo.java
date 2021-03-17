@@ -4,18 +4,10 @@ public class HotelInfo {
     public String name;
     public int weekdayrate;
     public int weekendrate;
-    public int rating;
-
-    public void setWeekdayrate(int weekdayrate) {
-        this.weekdayrate = weekdayrate;
-    }
+    private int totalRate;
 
     public int getWeekdayrate() {
         return weekdayrate;
-    }
-
-    public void setWeekendrate(int weekendrate) {
-        this.weekendrate = weekendrate;
     }
 
     public int getWeekendrate() {
@@ -26,15 +18,15 @@ public class HotelInfo {
         return name;
     }
 
-    public int getRating() {
-        return rating;
-    }
-
-    public HotelInfo(String name, int weekdayrate,int weekendrate,int rating) {
+    public HotelInfo(String name, int weekdayrate,int weekendrate) {
         this.name=name;
         this.weekdayrate = weekdayrate;
         this.weekendrate = weekendrate;
-        this.rating=rating;
+    }
+
+    public int totalRate(){
+        this.totalRate=weekdayrate+weekendrate;
+        return totalRate;
     }
 
     @Override
@@ -43,7 +35,7 @@ public class HotelInfo {
                 "name='" + name + '\'' +
                 ", Week Day rate=" + weekdayrate +
                 ", Week End rate=" + weekendrate +
-                ", rating=" + rating +
                 '}';
     }
+
 }

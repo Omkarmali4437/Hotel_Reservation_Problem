@@ -3,17 +3,15 @@ package com.myPackage;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.time.LocalDate;
-
 import static com.myPackage.HotelReservation.hotelInfos;
 
 public class HotelReservatioTest {
     HotelReservation hotelReservation;
 
-    HotelInfo lakewood =new HotelInfo("Lakewood",110,90,3);
-    HotelInfo bridgewood =new HotelInfo("Bridgewood",160,50,4);
-    HotelInfo ridgewood =new HotelInfo("Ridgewood",220,150,5);
+    HotelInfo lakewood =new HotelInfo("Lakewood",110,90);
+    HotelInfo bridgewood =new HotelInfo("Bridgewood",150,50);
+    HotelInfo ridgewood =new HotelInfo("Ridgewood",220,150);
 
     @Before
     public void setup(){
@@ -24,7 +22,6 @@ public class HotelReservatioTest {
         hotelReservation.addhotel(ridgewood);
 
     }
-
 
     @Test
     public void inserting_Hotel_True_if_inserted(){
@@ -40,7 +37,7 @@ public class HotelReservatioTest {
         LocalDate startdate=LocalDate.of(2020,10,10);
         LocalDate enddate=LocalDate.of(2020,10,11);
 
-        HotelInfo cheapesthotel=hotelReservation.findChepeatesthotel(startdate,enddate);
+        HotelInfo cheapesthotel=hotelReservation.find_Chepeatesthotel_based_on_WeekDay(startdate,enddate);
 
         Assert.assertEquals("Lakewood",cheapesthotel.getName());
     }
@@ -50,5 +47,17 @@ public class HotelReservatioTest {
         Assert.assertEquals(90,lakewood.getWeekendrate());
         Assert.assertEquals(50,bridgewood.getWeekendrate());
         Assert.assertEquals(150,ridgewood.getWeekendrate());
+    }
+
+    @Test
+    public void ability_to_find_cheapest_hotel_based_on_date(){
+        LocalDate startdate=LocalDate.of(2020,10,11);
+        LocalDate enddate=LocalDate.of(2020,10,12);
+
+        HotelInfo cheapesthotelonWeekDay=hotelReservation.find_Chepeatesthotel_based_on_WeekDay(startdate,enddate);
+        HotelInfo cheapesthotelonWeekEnd=hotelReservation.find_Chepeatesthotel_based_on_WeekEnd(startdate,enddate);
+
+        Assert.assertEquals("Lakewood",cheapesthotelonWeekDay.getName());
+        Assert.assertEquals("Bridgewood",cheapesthotelonWeekEnd.getName());
     }
 }
