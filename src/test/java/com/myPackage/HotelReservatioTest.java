@@ -9,9 +9,9 @@ import static com.myPackage.HotelReservation.hotelInfos;
 public class HotelReservatioTest {
     HotelReservation hotelReservation;
 
-    HotelInfo lakewood =new HotelInfo("Lakewood",110,90);
-    HotelInfo bridgewood =new HotelInfo("Bridgewood",150,50);
-    HotelInfo ridgewood =new HotelInfo("Ridgewood",220,150);
+    HotelInfo lakewood =new HotelInfo("Lakewood",110,90,3);
+    HotelInfo bridgewood =new HotelInfo("Bridgewood",150,50,4);
+    HotelInfo ridgewood =new HotelInfo("Ridgewood",220,150,5);
 
     @Before
     public void setup(){
@@ -59,5 +59,12 @@ public class HotelReservatioTest {
 
         Assert.assertEquals("Lakewood",cheapesthotelonWeekDay.getName());
         Assert.assertEquals("Bridgewood",cheapesthotelonWeekEnd.getName());
+    }
+
+    @Test
+    public void check_ratings_of_hotels(){
+        Assert.assertEquals(3,lakewood.getRating());
+        Assert.assertEquals(4,bridgewood.getRating());
+        Assert.assertEquals(5,ridgewood.getRating());
     }
 }
