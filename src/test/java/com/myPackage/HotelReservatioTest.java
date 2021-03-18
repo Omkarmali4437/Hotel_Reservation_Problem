@@ -72,4 +72,13 @@ public class HotelReservatioTest {
     public void find_cheapest_best_rated_hotel(){
         Assert.assertEquals("Bridgewood",hotelReservation.find_best_rated_hotel_and_also_cheapest());
     }
+
+    @Test
+    public void check_best_rated_hotel(){
+        LocalDate startdate=LocalDate.of(2020,10,11);
+        LocalDate enddate=LocalDate.of(2020,10,12);
+
+        HotelInfo bestrateHotel=hotelReservation.find_best_rated_hotel(startdate,enddate);
+        Assert.assertEquals("Ridgewood",bestrateHotel.getName());
+    }
 }

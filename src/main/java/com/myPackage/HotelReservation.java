@@ -61,4 +61,11 @@ public class HotelReservation {
         }
         return null;
     }
+
+    public HotelInfo find_best_rated_hotel(LocalDate startdate,LocalDate enddate){
+        long days= ChronoUnit.DAYS.between(startdate,enddate);
+        HotelInfo min1= Collections.max(hotelInfos,Comparator.comparing(hotelInfo->hotelInfo.getRating()));
+        System.out.println("Best rated Hotel is: "+ min1.getName() + "\nTotal Rate: "+min1.totalRate());
+        return min1;
+    }
 }
