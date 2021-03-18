@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class HotelReservation {
     public static List<HotelInfo> hotelInfos=new ArrayList<>();
@@ -31,5 +30,35 @@ public class HotelReservation {
         cheaprate=(int)(days*min1.totalRate());
         System.out.println("Cheapest Hotel Name based on week end: "+ min1.getName() + "\nTotal Rate: "+cheaprate);
         return min1;
+    }
+
+    public String find_best_rated_hotel_and_also_cheapest(){
+        HotelInfo minbasedonweekdays= Collections.min(hotelInfos,Comparator.comparing(hotelInfo->hotelInfo.getWeekdayrate()));
+        HotelInfo minbasedonweekends = Collections.min(hotelInfos,Comparator.comparing(hotelInfo->hotelInfo.getWeekendrate()));
+        if(minbasedonweekdays.totalRate()== minbasedonweekends.totalRate()){
+            if(minbasedonweekdays.rating> minbasedonweekends.rating) {
+                return minbasedonweekdays.getName();
+            }
+            else{
+                return minbasedonweekends.getName();
+            }
+        }
+        else if(minbasedonweekdays.totalRate()> minbasedonweekends.totalRate()){
+            if(minbasedonweekdays.rating> minbasedonweekends.rating) {
+                return minbasedonweekdays.getName();
+            }
+            else{
+                return minbasedonweekends.getName();
+            }
+        }
+        else if(minbasedonweekdays.totalRate()> minbasedonweekends.totalRate()){
+            if(minbasedonweekdays.rating< minbasedonweekends.rating) {
+                return minbasedonweekdays.getName();
+            }
+            else{
+                return minbasedonweekends.getName();
+            }
+        }
+        return null;
     }
 }

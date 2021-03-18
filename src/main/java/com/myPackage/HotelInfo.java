@@ -39,9 +39,11 @@ public class HotelInfo {
     public String toString() {
         return "HotelInfo{" +
                 "name='" + name + '\'' +
-                ", Week Day rate=" + weekdayrate +
-                ", Week End rate=" + weekendrate +
+                ", weekdayrate=" + weekdayrate +
+                ", weekendrate=" + weekendrate +
+                ", rating=" + rating +
                 '}';
     }
-
 }
+
+
