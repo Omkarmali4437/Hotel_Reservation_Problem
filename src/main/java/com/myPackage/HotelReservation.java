@@ -51,10 +51,10 @@ public class HotelReservation {
         for(int i=1;i< hotelInfos.size();i++){
             int totalrate=0;
             if(day>1 && day<6 && day1>1 && day1<6){
-                totalrate=totalrate+hotelInfos.get(i).getWeekdayrate();
+                totalrate=totalrate+hotelInfos.get(i).getWeekdayRewardRate();
             }
             else{
-                totalrate=totalrate+hotelInfos.get(i).getWeekendrate();
+                totalrate=totalrate+hotelInfos.get(i).getWeekendRewardRate();
             }
             hotelInfos.get(i).setTotalRate(totalrate);
             if(totalrate<min){
