@@ -46,7 +46,7 @@ public class HotelReservation {
         int day1=dayOfWeek1.getValue();
 
         int min=10000;
-        HotelInfo cheap=hotelInfos.get(0);
+        HotelInfo cheap=hotelInfos.stream().min(Comparator.comparing(HotelInfo::gettotalRate)).orElseThrow(NoSuchElementException::new);
 
         for(int i=1;i< hotelInfos.size();i++){
             int totalrate=0;

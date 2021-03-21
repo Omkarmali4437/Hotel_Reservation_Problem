@@ -169,4 +169,42 @@ public class HotelReservatioTest {
         Assert.assertEquals("Ridgewood",cheaphotelforrewardcustomer.getName());
     }
 
+    @Test
+    public void find_cheapest_best_rated_hotel_for_normal_customer(){
+        HotelReservation hotelReservation = new HotelReservation(Customertype.Regular_customer);
+        HotelInfo lakewood = new HotelInfo( "Lakewood", 110, 90, 3, 0, 0);
+        HotelInfo bridgewood = new HotelInfo( "Bridgewood", 150, 50, 4, 0, 0);
+        HotelInfo ridgewood = new HotelInfo( "Ridgewood", 220, 150, 5, 0,0);
+
+        hotelReservation.addhotel(lakewood);
+        hotelReservation.addhotel(bridgewood);
+        hotelReservation.addhotel(ridgewood);
+
+        LocalDate startdate=LocalDate.of(2020,10,11);
+        LocalDate enddate=LocalDate.of(2020,10,12);
+
+        HotelInfo cheapesthotel=hotelReservation.find_Chepeatesthotelint(startdate,enddate);
+
+        Assert.assertEquals("Bridgewood",cheapesthotel.getName());
+    }
+
+    @Test
+    public void find_cheapest_hotel_best_rated_for_reward_customer() throws ParseException{
+        HotelReservation hotelReservation = new HotelReservation(Customertype.Reward_customer);
+        HotelInfo lakewood = new HotelInfo( "Lakewood", 110, 90, 3, 80, 80);
+        HotelInfo bridgewood = new HotelInfo( "Bridgewood", 150, 50, 4, 110, 50);
+        HotelInfo ridgewood = new HotelInfo( "Ridgewood", 220, 150, 5, 100,40);
+
+        hotelReservation.addhotel(lakewood);
+        hotelReservation.addhotel(bridgewood);
+        hotelReservation.addhotel(ridgewood);
+
+        LocalDate startdate=LocalDate.of(2020,10,11);
+        LocalDate enddate=LocalDate.of(2020,10,12);
+
+        HotelInfo cheaphotelforrewardcustomer=hotelReservation.find_best_rated_hotel(startdate,enddate);
+        Assert.assertEquals("Ridgewood",cheaphotelforrewardcustomer.getName());
+    }
+
+
 }
